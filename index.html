@@ -10,8 +10,8 @@
     <style>
         /* CSS Variables */
         :root {
-            --primary: #2962ff;
-            --secondary: #00b0ff;
+            --primary: #94a7db;
+            --secondary: #385b6b;
             --dark: #263238;
             --light: #f5f7fa;
             --white: #ffffff;
@@ -94,11 +94,11 @@
     .nav-links { 
         display: flex; 
         align-items: center; 
-        gap: 1.5rem; 
+        gap: 1.5rem;
     } 
     
     .nav-link { 
-        color: var(--white); 
+        color: var(--white); /* Changed to white */
         font-weight: 500; 
         font-size: 1rem; 
         display: flex; 
@@ -106,82 +106,52 @@
         gap: 8px; 
         position: relative; 
         padding: 0.75rem 0; 
-        transition: var(--transition); 
+        transition: var(--transition);
+        text-decoration: none; /* Ensures no underlines */
     } 
     
-    .nav-link:after { 
-        content: ''; 
-        position: absolute; 
-        bottom: 0; 
-        left: 0; 
-        width: 0; 
-        height: 2px; 
-        background: var(--primary);
-        box-shadow: 0 0 10px var(--primary);
-        border-radius: 2px; 
-        transition: var(--transition); 
+    .dropdown-menu > a { 
+        display: flex; 
+        align-items: center; 
+        gap: 8px; 
+        color: var(--white); /* Changed to white */
+        font-weight: 600; 
+        padding: 0.75rem 0; 
+        position: relative;
+        text-decoration: none; /* Ensures no underlines */
     } 
     
-    .nav-link:hover:after { 
-        width: 100%; 
-    } 
-    
+    /* Hover states */
     .nav-link:hover { 
-        color: var(--primary); 
+        color: #4568ac;
+        text-decoration: none;
     } 
     
-    .nav-link i { 
-        font-size: 1.1rem; 
-    }
-        
-        /* Dropdown Menu */ 
-        .dropdown-menu { 
-            position: relative; 
-            display: inline-block; 
-        } 
-        
-        .dropdown-menu > a { 
-            display: flex; 
-            align-items: center; 
-            gap: 8px; 
-            color: var(--white); /* Changed to white for better visibility against dark nav */ 
-            font-weight: 600; 
-            padding: 0.75rem 0; 
-            position: relative; 
-        } 
-        
-        .dropdown-menu > a:after { 
-            content: ''; 
-            position: absolute; 
-            bottom: 0; 
-            left: 0; 
-            width: 0; 
-            height: 3px; 
-            background: var(--primary);
-            box-shadow: 0 0 10px var(--primary);
-            border-radius: 2px; 
-            transition: var(--transition); 
-        } 
-        
-        .dropdown-menu:hover > a:after { 
-            width: 100%; 
-        } 
-        
-        .dropdown-content { 
-            display: none; 
-            position: absolute; 
-            top: 100%; 
-            left: 0; 
-            background: #f8faff; /* Lighter background */ 
-            min-width: 240px; 
-            border-radius: var(--radius); 
-            padding: 1rem 0; 
-            z-index: 1001; 
-            box-shadow: var(--shadow-lg); 
-            opacity: 0; 
-            transform: translateY(10px); 
-            transition: var(--transition); 
-        } 
+    .dropdown-menu > a:hover {
+        color: #4568ac;
+        text-decoration: none;
+    } 
+    
+    .dropdown-menu {
+    position: relative; /* Ensure this is set to relative */
+    display: inline-block;
+}
+
+.dropdown-content { 
+    display: none; 
+    position: absolute; 
+    top: 100%; 
+    left: 0; /* This will now be relative to the dropdown-menu parent */
+    background: #f8faff; 
+    min-width: 240px; 
+    border-radius: var(--radius); 
+    padding: 1rem 0; 
+    z-index: 1001; 
+    box-shadow: var(--shadow-lg); 
+    opacity: 0; 
+    transform: translateY(10px); 
+    transition: opacity 0.3s ease, transform 0.3s ease; /* Simplified transition */
+} 
         
         .dropdown-menu:hover .dropdown-content { 
             display: block; 
@@ -197,12 +167,14 @@
             font-weight: 500; 
             color: #263238; /* Darker text for better contrast on light background */ 
             transition: var(--transition); 
+            text-decoration: none; /* Ensure no underlines */
         } 
         
         .dropdown-content a:hover { 
             background-color: #e6f7ff; /* Light blue hover state */ 
             color: var(--primary); 
             padding-left: 1.8rem; 
+            text-decoration: none; /* Ensure no underlines on hover */
         } 
         
         .dropdown-content a i { 
@@ -484,10 +456,12 @@ footer {
     align-items: center;
     gap: 10px;
     transition: var(--transition);
+    text-decoration: none; /* Add this to ensure no underlines */
 }
 
 .link-group a:hover {
     color: var(--secondary);
+    text-decoration: none; /* Add this to ensure no underlines on hover */
 }
 
 .link-group a i {
@@ -521,11 +495,12 @@ footer {
     color: var(--gray);
     font-size: 0.9rem;
     transition: var(--transition);
+    text-decoration: none; /* Add this to ensure no underlines */
 }
 
 .legal-links a:hover {
     color: var(--secondary);
-    text-decoration: underline;
+    text-decoration: none;
 }
 
         
