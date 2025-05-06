@@ -4,23 +4,568 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thailand's RoboCop: AI Cyborg 1.0</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Variables */
+        :root {
+            --primary: #2962ff;
+            --secondary: #00b0ff;
+            --dark: #263238;
+            --light: #f5f7fa;
+            --white: #ffffff;
+            --gray: #b0bec5;
+            --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --radius: 10px;
+            --transition: all 0.3s ease;
+            --heading-font: 'Poppins', sans-serif;
+            --accent: #00e5ff;
+            --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: var(--body-font);
+            line-height: 1.6;
+            color: var(--dark);
+            padding-top: 70px;
+            background-color: var(--light);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Navigation */
+        .top-nav { 
+            background-color: rgba(255, 255, 255, 0.98); 
+            backdrop-filter: blur(10px); 
+            position: fixed; 
+            top: 0;
+            left: 0;
+            width: 100%; 
+            z-index: 1000; 
+            box-shadow: var(--shadow-sm); 
+            padding: 10px 0; 
+        } 
+        
+        .top-nav .container { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+        } 
+        
+        .nav-brand { 
+            display: flex; 
+            align-items: center; 
+            gap: 12px; 
+            font-family: var(--heading-font); 
+            font-weight: 700; 
+            font-size: 1.5rem; 
+            color: var(--primary); 
+        } 
+        
+        .nav-brand .logo { 
+            height: 40px; 
+            width: auto; 
+        } 
+        
+        .nav-brand:hover .logo { 
+            transform: none; 
+        } 
+        
+        .nav-links { 
+            display: flex; 
+            align-items: center; 
+            gap: 1.5rem; 
+        } 
+        
+        .nav-link { 
+            color: var(--dark); 
+            font-weight: 600; 
+            font-size: 1rem; 
+            display: flex; 
+            align-items: center; 
+            gap: 8px; 
+            position: relative; 
+            padding: 0.75rem 0; 
+            transition: var(--transition); 
+        } 
+        
+        .nav-link:after { 
+            content: ''; 
+            position: absolute; 
+            bottom: 0; 
+            left: 0; 
+            width: 0; 
+            height: 3px; 
+            background: linear-gradient(90deg, var(--primary), var(--secondary)); 
+            border-radius: 2px; 
+            transition: var(--transition); 
+        } 
+        
+        .nav-link:hover:after { 
+            width: 100%; 
+        } 
+        
+        .nav-link:hover { 
+            color: var(--primary); 
+        } 
+        
+        .nav-link i { 
+            font-size: 1.1rem; 
+        } 
+        
+        /* Dropdown Menu */ 
+        .dropdown-menu { 
+            position: relative; 
+            display: inline-block; 
+        } 
+        
+        .dropdown-menu > a { 
+            display: flex; 
+            align-items: center; 
+            gap: 8px; 
+            color: var(--dark); 
+            font-weight: 600; 
+            padding: 0.75rem 0; 
+            position: relative; 
+        } 
+        
+        .dropdown-menu > a:after { 
+            content: ''; 
+            position: absolute; 
+            bottom: 0; 
+            left: 0; 
+            width: 0; 
+            height: 3px; 
+            background: linear-gradient(90deg, var(--primary), var(--secondary)); 
+            border-radius: 2px; 
+            transition: var(--transition); 
+        } 
+        
+        .dropdown-menu:hover > a:after { 
+            width: 100%; 
+        } 
+        
+        .dropdown-content { 
+            display: none; 
+            position: absolute; 
+            top: 100%; 
+            left: 0; 
+            background: var(--white); 
+            min-width: 240px; 
+            border-radius: var(--radius); 
+            padding: 1rem 0; 
+            z-index: 1001; 
+            box-shadow: var(--shadow-lg); 
+            opacity: 0; 
+            transform: translateY(10px); 
+            transition: var(--transition); 
+        } 
+        
+        .dropdown-menu:hover .dropdown-content { 
+            display: block; 
+            opacity: 1; 
+            transform: translateY(0); 
+        } 
+        
+        .dropdown-content a { 
+            display: flex; 
+            align-items: center; 
+            gap: 12px; 
+            padding: 0.8rem 1.5rem; 
+            font-weight: 500; 
+            color: var(--dark); 
+            transition: var(--transition); 
+        } 
+        
+        .dropdown-content a:hover { 
+            background-color: var(--light); 
+            color: var(--primary); 
+            padding-left: 1.8rem; 
+        } 
+        
+        .dropdown-content a i { 
+            font-size: 1rem; 
+            color: var(--secondary); 
+            width: 20px; 
+            text-align: center; 
+        }
+        
+        /* Hero section */
+        #hero {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('hero-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 8rem 0;
+            margin-top: 0;
+            position: relative;
+        }
+        
+        #hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(41, 98, 255, 0.8), rgba(0, 176, 255, 0.8));
+            opacity: 0.6;
+            z-index: 1;
+        }
+        
+        #hero .container {
+            position: relative;
+            z-index: 2;
+        }
+        
+        #hero h2 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        #hero p {
+            font-size: 1.4rem;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+        
+        /* Product sections */
+        .product-section {
+            padding: 6rem 0;
+        }
+        
+        .product-section h2 {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary);
+            font-size: 2.5rem;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .product-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--gradient);
+            border-radius: 2px;
+        }
+        
+        .alt-bg {
+            background-color: var(--white);
+        }
+        
+        .content-wrapper {
+            display: flex;
+            gap: 3rem;
+            margin-bottom: 3rem;
+            align-items: center;
+        }
+        
+        .text-content, .image-content {
+            flex: 1;
+        }
+        
+        .text-content p, .text-content ul, .text-content ol {
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+            color: var(--dark);
+            line-height: 1.8;
+        }
+        
+        .text-content ul, .text-content ol {
+            margin-left: 1.5rem;
+        }
+        
+        .text-content li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .image-content img {
+            width: 100%;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-lg);
+            transition: transform 0.3s ease;
+        }
+        
+        .image-content:hover img {
+            transform: scale(1.02);
+        }
+        
+        .caption {
+            text-align: center;
+            font-style: italic;
+            margin-top: 1rem;
+            color: var(--gray);
+        }
+        
+        /* Video container */
+        .video-container {
+            margin-top: 3rem;
+        }
+        
+        .video-container h3 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: #1a237e;
+        }
+        
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            margin-top: 3rem;
+        }
+        
+        .testimonials h3 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: #1a237e;
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .testimonial {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .testimonial p {
+            margin-bottom: 1rem;
+        }
+        
+        .testimonial .author {
+            font-weight: bold;
+            text-align: right;
+            color: #1a237e;
+        }
+        /* Footer */
+footer {
+    background-color: var(--dark);
+    color: var(--white);
+    padding: 80px 0 0;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 60px;
+    margin-bottom: 50px;
+}
+
+.footer-brand {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.footer-brand .logo {
+    height: 50px;
+    width: auto;
+}
+
+.footer-brand span {
+    font-family: var(--heading-font);
+    font-weight: 700;
+    font-size: 1.8rem;
+    color: var(--white);
+}
+
+.footer-description {
+    color: var(--gray);
+    line-height: 1.7;
+}
+
+.footer-social {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.footer-social a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--white);
+    border-radius: 50%;
+    transition: var(--transition);
+}
+
+.footer-social a:hover {
+    background: var(--secondary);
+    transform: translateY(-3px);
+}
+
+.footer-links {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+}
+
+.link-group h4 {
+    color: var(--white);
+    margin-bottom: 25px;
+    font-size: 1.3rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.link-group h4 i {
+    color: var(--secondary);
+}
+
+.link-group ul li {
+    margin-bottom: 15px;
+    transition: var(--transition);
+}
+
+.link-group ul li:hover {
+    transform: translateX(5px);
+}
+
+.link-group a {
+    color: var(--gray);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: var(--transition);
+}
+
+.link-group a:hover {
+    color: var(--secondary);
+}
+
+.link-group a i {
+    width: 20px;
+    text-align: center;
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 25px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.copyright {
+    color: var(--gray);
+    font-size: 0.95rem;
+    text-align: center;
+}
+
+.legal-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.legal-links a {
+    color: var(--gray);
+    font-size: 0.9rem;
+    transition: var(--transition);
+}
+
+.legal-links a:hover {
+    color: var(--secondary);
+    text-decoration: underline;
+}
+
+        
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .content-wrapper {
+                flex-direction: column;
+            }
+            
+            header .container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 1rem;
+            }
+            
+            nav ul li {
+                margin: 0 0.75rem;
+            }
+        }
+    </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <header>
-        <div class="container">
-            <h1>AI Cyborg 1.0</h1>
-            <nav>
-                <ul>
-                    <li><a href="#what">What</a></li>
-                    <li><a href="#how">How</a></li>
-                    <li><a href="#when">When</a></li>
-                    <li><a href="#where">Where</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+    <nav class="top-nav"> 
+        <div class="container"> 
+            <div class="nav-brand"> 
+                <a href="home.html"><img src="logo.png" alt="Trendy Logo" class="logo"></a> 
+                <span>TRENDY INFO</span> 
+            </div> 
+            <div class="nav-links"> 
+                <a href="#" class="nav-link"><i class="fas fa-home"></i> Home</a> 
+                <div class="dropdown-menu"> 
+                    <a href="#categories"><i class="fas fa-th-large"></i> Categories <i class="fas fa-chevron-down"></i></a> 
+                    <div class="dropdown-content"> 
+                        <a href="communication.html"><i class="fas fa-comments"></i> Communication</a> 
+                        <a href="security.html"><i class="fas fa-shield-alt"></i> Security</a> 
+                        <a href="health.html"><i class="fas fa-heartbeat"></i> Health</a> 
+                        <a href="entertainment.html"><i class="fas fa-film"></i> Entertainment</a> 
+                        <a href="transportation.html"><i class="fas fa-car"></i> Transportation</a> 
+                        <a href="education.html"><i class="fas fa-graduation-cap"></i> Education</a> 
+                    </div> 
+                </div> 
+                <a href="aboutus.html" class="nav-link"><i class="fas fa-info-circle"></i> About Us</a> 
+                <a href="#feedback" class="nav-link"><i class="fas fa-envelope"></i> Contact</a> 
+            </div> 
+        </div> 
+    </nav>
 
     <section id="hero">
         <div class="container">
@@ -139,29 +684,66 @@
     <footer>
         <div class="container">
             <div class="footer-content">
-                <div class="footer-info">
-                    <h3>AI Cyborg 1.0</h3>
-                    <p>Thailand's innovative approach to modern policing</p>
+                <div class="footer-brand">
+                    <img src="Trendy.png" alt="Trendy Logo" class="footer-logo">
+                    <span>TRENDY INFO</span>
+                    <p class="footer-description">Exploring the future through industry innovation.</p>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                    </div>
                 </div>
-                <div class="footer-contact">
-                    <h3>Learn More</h3>
-                    <p>Visit: <a href="https://www.cdomagazine.tech/aiml/thailand-unveils-first-ai-police-bot" target="_blank">CDO Magazine Article</a></p>
-                    <p>Royal Thai Police Technology Division</p>
-                </div>
-                <div class="footer-social">
-                    <h3>Share</h3>
-                    <div class="social-icons">
-                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                
+                <div class="footer-links">
+                    <div class="link-group">
+                        <h4><i class="fas fa-industry"></i> Industries</h4>
+                        <ul>
+                            <li><a href="health.html"><i class="fas fa-heartbeat"></i> Health Tech</a></li>
+                            <li><a href="security.html"><i class="fas fa-shield-alt"></i> Cybersecurity</a></li>
+                            <li><a href="transportation.html"><i class="fas fa-car"></i> Transportation</a></li>
+                            <li><a href="communication.html"><i class="fas fa-comments"></i> Communication</a></li>
+                            <li><a href="education.html"><i class="fas fa-graduation-cap"></i> Education</a></li>
+                            <li><a href="entertainment.html"><i class="fas fa-film"></i> Entertainment</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="link-group">
+                        <h4><i class="fas fa-book"></i> Resources</h4>
+                        <ul>
+                            <li><a href="#"><i class="fas fa-file-alt"></i> Reports</a></li>
+                            <li><a href="#"><i class="fas fa-chart-line"></i> Market Data</a></li>
+                            <li><a href="#"><i class="fas fa-blog"></i> Blog</a></li>
+                            <li><a href="#"><i class="fas fa-newspaper"></i> News</a></li>
+                            <li><a href="#"><i class="fas fa-book-open"></i> Guides</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="link-group">
+                        <h4><i class="fas fa-building"></i> Company</h4>
+                        <ul>
+                            <li><a href="about.html"><i class="fas fa-users"></i> About</a></li>
+                            <li><a href="#"><i class="fas fa-briefcase"></i> Careers</a></li>
+                            <li><a href="#"><i class="fas fa-handshake"></i> Partners</a></li>
+                            <li><a href="#feedback"><i class="fas fa-envelope"></i> Contact</a></li>
+                            <li><a href="#"><i class="fas fa-question-circle"></i> FAQ</a></li>
+                        </ul>
                     </div>
                 </div>
             </div>
-            <div class="copyright">
-                <p>&copy; 2023 AI Cyborg 1.0 Information Page. All rights reserved.</p>
+            
+            <div class="footer-bottom">
+                <div class="copyright">
+                    © 2025 Trendy Info. All rights reserved.
+                </div>
+                <div class="legal-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Cookie Policy</a>
+                </div>
             </div>
         </div>
-    </footer>
+    </footer>    
 </body>
 </html>
