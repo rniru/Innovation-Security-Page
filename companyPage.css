@@ -409,8 +409,8 @@ footer {
     gap: 20px;
 }
 
-.footer-brand .logo {
-    height: 50px;
+.footer-brand .footer-logo {
+    height: 100px;
     width: auto;
 }
 
@@ -597,6 +597,7 @@ footer {
     transition: all 0.3s ease;
 }
 
+/* Adding Product Sections styling from styles.css if not already in page.css */
 .product-section {
     padding: 5rem 0;
 }

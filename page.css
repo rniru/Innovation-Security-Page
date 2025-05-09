@@ -409,8 +409,8 @@ footer {
     gap: 20px;
 }
 
-.footer-brand .logo {
-    height: 50px;
+.footer-brand .footer-logo {
+    height: 100px;
     width: auto;
 }
 
