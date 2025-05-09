@@ -1,6 +1,6 @@
 /* CSS Variables */
 :root {
-    --primary: #4b87e0;
+    --primary: #80abea;
     --secondary: #0072ff;
     --accent: #7d00ff;
     --dark: #121212;
@@ -52,8 +52,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* ===== NAVIGATION ===== */
 .top-nav { 
-    background-color: rgba(18, 18, 18, 0.85); 
-    backdrop-filter: blur(10px); 
+    background-color: #373c64; 
     position: fixed; 
     top: 0;
     left: 0;
@@ -580,6 +579,239 @@ footer {
     
     nav ul li {
         margin: 0 0.75rem;
+    }
+    
+    /* Navigation responsive styles */
+    .top-nav .container {
+        flex-direction: column;
+        padding: 1rem 0;
+    }
+    
+    .nav-links {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        padding: 0 1.5rem;
+    }
+    
+    .nav-link, .dropdown-menu {
+        display: inline-block;
+        text-align: center;
+        padding: 0.75rem 1rem;
+        margin: 0.5rem;
+        font-size: 1rem;
+        border-radius: 8px;
+        transition: background-color 0.3s ease;
+    }
+    
+    .nav-link:hover, .dropdown-menu:hover > a {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+    
+    .dropdown-menu {
+        width: auto;
+        margin: 0.5rem;
+    }
+    
+    .dropdown-menu > a {
+        justify-content: center;
+        display: flex;
+        padding: 0.75rem 1rem;
+    }
+    
+    .dropdown-content {
+        position: fixed;
+        width: 90%;
+        max-width: 300px;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+        opacity: 1;
+        z-index: 1010;
+        display: none;
+        padding: 1rem 0;
+        background-color: rgba(18, 18, 18, 0.95);
+        border: 1px solid rgba(0, 198, 255, 0.2);
+        border-radius: var(--radius);
+    }
+    
+    .dropdown-menu:hover .dropdown-content {
+        display: block;
+    }
+    
+    /* Footer responsive styles */
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    
+    .footer-links {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .footer-brand .footer-logo {
+        height: 80px;
+    }
+    
+    .legal-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+    #hero {
+        margin-top: 12.7rem;
+        padding: 5rem 0;
+    }
+    
+    #hero h2 {
+        font-size: 2.8rem;
+    }
+    
+    #hero p {
+        font-size: 1.2rem;
+        padding: 0 15px;
+    }
+    
+    .dropdown-menu {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        margin: 0.5rem 0;
+    }
+    
+    .dropdown-menu > a {
+        justify-content: center;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    /* Tablet-sized devices */
+    .footer-content {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .footer-links {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .footer-brand .footer-logo {
+        height: 90px;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Small mobile devices */
+    #hero {
+        padding: 4rem 0;
+    }
+    
+    #hero h2 {
+        font-size: 2.2rem;
+        padding: 0 10px;
+    }
+    
+    #hero p {
+        font-size: 1rem;
+        padding: 0 15px;
+    }
+    
+    .footer-brand .footer-logo {
+        height: 70px;
+    }
+    
+    .footer-social {
+        justify-content: center;
+    }
+}
+@media (min-width: 1025px) and (max-width: 1440px) {
+    .container {
+        max-width: 1200px;
+    }
+    
+    #hero h2 {
+        font-size: 4rem;
+    }
+    
+    #hero p {
+        font-size: 1.5rem;
+    }
+    
+    .product-section {
+        padding: 7rem 0;
+    }
+    
+    .product-section h2 {
+        font-size: 2.8rem;
+    }
+    
+    .content-wrapper {
+        gap: 4rem;
+    }
+    
+    .footer-content {
+        gap: 80px;
+    }
+}
+
+/* X-Large devices (large desktops, 1441px and up) */
+@media (min-width: 1441px) {
+    .container {
+        max-width: 1400px;
+    }
+    
+    body {
+        font-size: 1.1rem;
+    }
+    
+    #hero {
+        padding: 10rem 0;
+    }
+    
+    #hero h2 {
+        font-size: 4.5rem;
+    }
+    
+    #hero p {
+        font-size: 1.6rem;
+        max-width: 900px;
+    }
+    
+    .product-section {
+        padding: 8rem 0;
+    }
+    
+    .product-section h2 {
+        font-size: 3rem;
+        margin-bottom: 4rem;
+    }
+    
+    .content-wrapper {
+        gap: 5rem;
+    }
+    
+    .text-content p, .text-content ul, .text-content ol {
+        font-size: 1.1rem;
+        line-height: 1.9;
+    }
+    
+    .footer-content {
+        gap: 100px;
+    }
+    
+    .footer-brand .footer-logo {
+        height: 120px;
+    }
+    
+    .footer-brand span {
+        font-size: 2rem;
+    }
+    
+    .link-group h4 {
+        font-size: 1.5rem;
     }
 }
 
