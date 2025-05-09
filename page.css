@@ -1,6 +1,6 @@
 /* CSS Variables */
 :root {
-    --primary: #00c6ff;
+    --primary: #4b87e0;
     --secondary: #0072ff;
     --accent: #7d00ff;
     --dark: #121212;
@@ -17,8 +17,6 @@
     --body-font: 'Roboto', sans-serif;
     --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
     --glass: rgba(255, 255, 255, 0.1);
-    
-    /*additional variables from styles.css */
     --success: #27ae60;
     --warning: #f39c12;
     --error: #ff4b5c;
@@ -115,7 +113,10 @@ h1, h2, h3, h4, h5, h6 {
     padding: 0.75rem 0; 
     transition: var(--transition);
     text-decoration: none;
-} 
+}
+.nav-link:hover {
+    color: var(--primary);
+}
 .dropdown-menu, 
 .dropdown-menu > a,
 .dropdown-toggle,
@@ -133,15 +134,14 @@ h1, h2, h3, h4, h5, h6 {
     box-shadow: none !important;
     outline: none !important;
 }
-/* Add this to fix the white background in the Categories button */
+
 .dropdown-menu {
     position: relative;
     display: inline-block;
-    background-color: transparent !important; /* Make sure the dropdown menu itself is transparent */
+    background-color: transparent !important;
     margin-right: -2.5rem;
 }
 
-/* Target the button specifically */
 .dropdown-menu > a {
     display: flex; 
     align-items: center; 
@@ -150,9 +150,12 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 600; 
     position: relative;
     text-decoration: none;
-    background-color: transparent !important; /* Ensure the button has no background */
+    background-color: transparent !important;
+    transition: var(--transition);
 }
-
+.dropdown-menu > a:hover {
+    color: var(--primary);
+}
 /* Make sure any Bootstrap classes don't override our styles */
 .btn, .btn-light, .bg-white, .dropdown-toggle {
     background-color: transparent !important;
@@ -165,7 +168,7 @@ h1, h2, h3, h4, h5, h6 {
     position: absolute; 
     top: 100%; 
     left: 0;
-    background-color: rgba(18, 18, 18, 0.95); /* Changed from #f8faff to match navbar */
+    background-color: rgba(18, 18, 18, 0.95);
     min-width: 240px; 
     border-radius: var(--radius); 
     padding: 1rem 0; 
@@ -179,8 +182,8 @@ h1, h2, h3, h4, h5, h6 {
 
 .dropdown-menu:hover .dropdown-content { 
     display: block; 
-    opacity: 1; 
-    transform: translateY(0); 
+    opacity: 1;
+    transform: translateY(0);
 } 
 
 .dropdown-content a { 
@@ -189,13 +192,13 @@ h1, h2, h3, h4, h5, h6 {
     gap: 12px; 
     padding: 0.8rem 1.5rem; 
     font-weight: 500; 
-    color: var(--white); /* Changed from #263238 to white for better contrast */
+    color: var(--white);
     transition: var(--transition); 
     text-decoration: none;
 } 
 
 .dropdown-content a:hover { 
-    background-color: rgba(0, 198, 255, 0.1); /* Changed from #e6f7ff */
+    background-color: rgba(0, 198, 255, 0.1);
     color: var(--primary); 
     padding-left: 1.8rem; 
     text-decoration: none;
@@ -203,7 +206,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .dropdown-content a i { 
     font-size: 1rem; 
-    color: var(--secondary); 
+    color: var(--primary); 
     width: 20px; 
     text-align: center; 
 }
