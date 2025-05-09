@@ -597,7 +597,6 @@ footer {
     transition: all 0.3s ease;
 }
 
-/* Adding Product Sections styling from styles.css if not already in page.css */
 .product-section {
     padding: 5rem 0;
 }
