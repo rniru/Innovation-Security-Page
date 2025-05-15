@@ -1,6 +1,6 @@
 /* CSS Variables */
 :root {
-    --primary: #80abea;
+    --primary: #3864a7;
     --secondary: #0072ff;
     --accent: #7d00ff;
     --dark: #121212;
@@ -17,8 +17,6 @@
     --body-font: 'Roboto', sans-serif;
     --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
     --glass: rgba(255, 255, 255, 0.1);
-    --success: #27ae60;
-    --warning: #f39c12;
     --error: #ff4b5c;
     --text-light: #636e72;
     --light-gray: #dfe6e9;
@@ -38,6 +36,10 @@ p, li {
     font-size: 1.05rem;
     letter-spacing: 0.3px;
 }
+strong{
+    font-weight: 600;
+    color: #343956;
+}
 
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--heading-font);
@@ -47,7 +49,7 @@ h1, h2, h3, h4, h5, h6 {
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 15px;
 }
 
 /* ===== NAVIGATION ===== */
@@ -154,7 +156,7 @@ h1, h2, h3, h4, h5, h6 {
 .dropdown-menu > a:hover {
     color: var(--primary);
 }
-/* Make sure any Bootstrap classes don't override our styles */
+
 .btn, .btn-light, .bg-white, .dropdown-toggle {
     background-color: transparent !important;
     border: none !important;
@@ -443,6 +445,19 @@ h1, h2, h3, h4, h5, h6 {
     font-style: italic;
     margin-top: 1rem;
     color: var(--gray);
+}
+
+.caption a {
+    text-decoration: none;
+    color: inherit;
+    transition: var(--transition);
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+}
+
+.caption a:hover {
+    color: #3182ce;
 }
 
 /* ===== VIDEO CONTAINER ===== */
