@@ -697,7 +697,12 @@ footer {
         padding: 6px 10px;
         background-color: transparent;
         border-radius: 4px;
-        margin-left: -60px; /* This negative margin is causing issues */
+        margin-left: -60px;
+        transition: background-color 0.3s;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 5px;
         white-space: nowrap;
     }
     
@@ -719,7 +724,6 @@ footer {
         top: 100%;
     }
     
-    /* Fix for hero section margin due to fixed nav */
     #hero {
         margin-top: 0;
         padding: 4rem 0;
@@ -778,19 +782,31 @@ footer {
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 650px) {
     /* Small mobile devices */
     .author-image {
-        width: 60px;
-        height: 60px;
+        width: 80px;
+        height: 80px;
     }
     
     .author-name {
         padding: 6px 12px;
-        font-size: 0.9rem;
+        font-size: 1rem;
     }
     body {
         padding-top: 60px;
+    }
+    h2{
+        font-size: 1.5rem;
+    }
+    p, li {
+        font-size: 0.90rem;
+        letter-spacing: 0.3px;
+    }
+    
+    .text-content p, .text-content ul, .text-content ol {
+        font-size: 0.90rem;
+        line-height: 1.6;
     }
     
     .top-nav {
@@ -802,7 +818,7 @@ footer {
     }
     
     .nav-brand span {
-        font-size: 1.2rem;
+        font-size: 1rem;
     }
     
     .nav-links {
@@ -810,43 +826,106 @@ footer {
     }
     
     .nav-link, .dropdown-menu > a {
-        font-size: 0.75rem;
-        padding: 5px 8px;
+        font-size: 0.6rem;
+        padding: 6px 10px;
+        background-color: transparent;
+        border-radius: 4px;
+        margin-left: -90px;
+        transition: background-color 0.3s;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        white-space: nowrap;
     }
     
-    /* Adjust dropdown for very small screens */
+    .dropdown-menu {
+        position: relative;
+        display: inline-flex;
+        width: auto;
+        margin: 0;
+        justify-content: center;
+    }
+    
     .dropdown-content {
+        position: absolute;
         width: 180px;
+        left: -100px;
+        right: auto;
+        top: 100%;
     }
     
     .dropdown-content a {
-        padding: 0.6rem 1rem;
-        font-size: 0.85rem;
+        padding: 0.5rem 0.75rem;
+        font-size: 0.70rem;
     }
-    
-    /* Fix for hero section margin due to fixed nav */
+
     #hero {
         margin-top: 0;
     }
     
     #hero h2 {
-        font-size: 2.2rem;
-        padding: 0 10px;
+        font-size: 2.5rem;
+        padding: 0px;
+    }
+    .back-button{
+        padding: 8px 16px;
+        font-size: 0.9rem;
+        position: absolute;
+        top: 19rem;
+        left: 50%;
+        width: auto;
+        z-index: 10;
     }
     
-    #hero p {
-        font-size: 1rem;
-        padding: 0 15px;
+    .btn-back {
+        font-size: 0.85rem;
+        padding: 6px 12px;
+        margin-top: 1rem;
     }
-    
     .footer-brand .footer-logo {
-        height: 70px;
+        height: 65px;
     }
-    
-    .footer-social {
-        justify-content: center;
+
+   .footer-brand span {
+        font-size: 0.75rem;
     }
-}
+    .footer-links {
+        grid-template-columns: 1fr;
+    }
+
+   .link-group h4 {
+        font-size: 1.2rem;
+    }
+
+  .link-group ul li {
+        font-size: 0.8rem;
+    }
+    .link-group-2 ul li {
+        font-size: 0.8rem;
+    }
+
+   .footer-bottom {
+        padding: 20px 0;
+    }
+
+   .copyright {
+        font-size: 0.8rem;
+    }
+  .legal-links {
+        gap: 8px;
+    }
+  .legal-links a {
+        font-size: 0.7rem;
+    }
+    .product-section h2 {
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+        padding-bottom: 10px;
+    }
+  }
+  
+
 @media (min-width: 1025px) and (max-width: 1440px) {
     .container {
         max-width: 1200px;
@@ -933,33 +1012,4 @@ footer {
     .link-group h4 {
         font-size: 1.5rem;
     }
-}
-
-/* Adding Bootstrap Overrides from styles.css */
-.btn-primary {
-    background-color: var(--secondary);
-    border-color: var(--secondary);
-}
-
-.btn-primary:hover, .btn-primary:focus, .btn-primary:active {
-    background-color: var(--accent) !important;
-    border-color: var(--accent) !important;
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(255, 75, 92, 0.4);
-    transition: all 0.3s ease;
-}
-
-/* Adding Product Sections styling from styles.css if not already in page.css */
-.product-section {
-    padding: 5rem 0;
-}
-
-.alt-bg {
-    background-color: var(--light);
-}
-
-/* Adding any other unique styles from styles.css */
-strong {
-    color: var(--secondary);
-    font-weight: 600;
 }
