@@ -262,8 +262,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .author-image {
-    width: 6.5rem;
-    height: 6.5rem;
+    width: 7.5rem;
+    height: 7.5rem;
     border-radius: 50%;
     background-color: none;
     border: 2px solid #c4c4c4;
@@ -285,7 +285,7 @@ h1, h2, h3, h4, h5, h6 {
     border-radius: 4px;
     font-weight: 500;
     margin-bottom: 10px;
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     font-family: var(--body-font);
 }
 
@@ -316,6 +316,59 @@ h1, h2, h3, h4, h5, h6 {
 
 .btn-back:hover {
     background-color: #0c1a2b;
+}
+/* ===== PAGINATION NAVIGATION ===== */
+.page-navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 4rem;
+    margin-bottom: -11.5rem;
+    position: relative;
+}
+
+.nav-button {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #44496d;
+    font-weight: 600;
+    position: relative;
+    z-index: 2;
+}
+
+.nav-button.prev {
+    margin-left: 30px;
+    margin-right: auto;
+}
+
+.nav-button.next {
+    margin-right: 30px;
+    margin-left: auto;
+    flex-direction: row-reverse;
+}
+
+.nav-button .circle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    color: #ffffff;
+    background-color: rgb(94, 102, 147);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    margin: 0 10px;
+    transition: all 0.3s ease;
+}
+
+.nav-button:hover .circle {
+    background-color: #464882;
+    color: white;
+}
+
+.nav-button .text {
+    font-size: 1.2rem;
 }
 
 /* ===== PRODUCT SECTIONS ===== */
@@ -645,9 +698,20 @@ footer {
         margin-bottom: 15px;
     }
     
-    .btn-back {
+    .back-button{
         padding: 8px 16px;
         font-size: 0.9rem;
+        position: absolute;
+        top: 19rem;
+        left: 50%;
+        width: auto;
+        z-index: 10;
+    }
+    
+    .btn-back {
+        font-size: 0.85rem;
+        padding: 6px 12px;
+        margin-top: 1rem;
     }
     
     .content-wrapper {
@@ -743,6 +807,30 @@ footer {
         justify-content: center;
     }
     
+    /* Pagination responsive styles */
+    .page-navigation {
+        margin-top: 3rem;
+        margin-bottom: -3.5rem;
+    }
+    
+    .nav-button .circle {
+        width: 45px;
+        height: 45px;
+        font-size: 1.2rem;
+    }
+    
+    .nav-button .text {
+        font-size: 1rem;
+    }
+    
+    .nav-button.prev {
+        margin-left: 20px;
+    }
+    
+    .nav-button.next {
+        margin-right: 20px;
+    }
+    
     /* Footer responsive styles */
     .footer-content {
         grid-template-columns: 1fr;
@@ -779,6 +867,31 @@ footer {
     
     .footer-brand .footer-logo {
         height: 90px;
+    }
+    .page-navigation {
+        align-items: center;
+        margin-top: 3rem;
+        margin-bottom: -4.5rem;
+    }
+    
+    .nav-button .circle {
+        width: 45px;
+        height: 45px;
+        font-size: 1.2rem;
+    }
+    
+    .nav-button .text {
+        font-size: 1rem;
+    }
+    
+    .nav-button.prev {
+        margin-left: 25;
+        margin-right: 0;
+    }
+    
+    .nav-button.next {
+        margin-left: 0;
+        margin-right: 25;
     }
 }
 
@@ -891,18 +1004,17 @@ footer {
         height: 65px;
     }
 
-   .footer-brand span {
+    .footer-brand span {
         font-size: 0.75rem;
     }
     .footer-links {
         grid-template-columns: 1fr;
     }
 
-   .link-group h4 {
+    .link-group h4 {
         font-size: 1.2rem;
     }
-
-  .link-group ul li {
+    .link-group ul li {
         font-size: 0.8rem;
     }
     .link-group-2 ul li {
@@ -916,16 +1028,38 @@ footer {
    .copyright {
         font-size: 0.8rem;
     }
-  .legal-links {
+    .legal-links {
         gap: 8px;
     }
-  .legal-links a {
+    .legal-links a {
         font-size: 0.7rem;
     }
     .product-section h2 {
         font-size: 2rem;
         margin-bottom: 1.5rem;
         padding-bottom: 10px;
+    }
+    .page-navigation {
+        margin-top: 2rem;
+        margin-bottom: -4.5rem;
+    }
+    
+    .nav-button .circle {
+        width: 25px;
+        height: 25px;
+        font-size: 0.7rem;
+    }
+    
+    .nav-button .text {
+        font-size: 0.7rem;
+    }
+    
+    .nav-button.prev {
+        margin-left: 10px;
+    }
+    
+    .nav-button.next {
+        margin-right: 10px;
     }
   }
   
@@ -957,6 +1091,15 @@ footer {
     
     .footer-content {
         gap: 80px;
+    }
+    .page-navigation {
+        margin-top: 4rem;
+        margin-bottom: -10.5rem;
+    }
+    
+    .nav-button .circle {
+        width: 48px;
+        height: 48px;
     }
 }
 
@@ -1015,5 +1158,19 @@ footer {
     
     .link-group h4 {
         font-size: 1.5rem;
+    }
+    .page-navigation {
+        margin-top: 5rem;
+        margin-bottom: -12rem;
+    }
+    
+    .nav-button .circle {
+        width: 55px;
+        height: 55px;
+        font-size: 1.6rem;
+    }
+    
+    .nav-button .text {
+        font-size: 1.3rem;
     }
 }
