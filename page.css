@@ -29,7 +29,7 @@ body {
     line-height: 1.7;
     color: var(--dark);
     padding-top: 70px;
-    background-color: #f8faff;
+    background-color: #fdfcfc;
     font-size: 1.05rem;
 }
 
@@ -867,6 +867,10 @@ footer {
     #hero h2 {
         font-size: 2.5rem;
         padding: 0px;
+        width: 100%;
+        text-align: center;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
     }
     .back-button{
         padding: 8px 16px;
