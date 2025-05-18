@@ -578,6 +578,7 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 1.05rem;
     color: var(--dark);
     line-height: 1.8;
+    text-align: justify;
 }
 .text-content h3 {
     font-size: 2.5rem;
@@ -832,11 +833,19 @@ footer {
 
 /* ===== RESPONSIVE DESIGN ===== */
 @media (max-width: 768px) {
-    .btn-back {
+    .back-button{
         padding: 8px 16px;
-        font-size: 0.9rem;
-    }
-    
+        position: absolute;
+        top: 33.5rem;
+        left: 50%;
+        width: auto;
+        z-index: 10;
+   }
+   .btn-back {
+        font-size: 1rem;
+        padding: 6px 12px;
+        margin-top: 1rem;
+   }
     .content-wrapper {
         flex-direction: column;
     }

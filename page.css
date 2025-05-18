@@ -32,6 +32,9 @@ body {
 }
 
 /*Text readability */
+p {
+    text-align: justify;
+}
 p, li {
     font-size: 1.05rem;
     letter-spacing: 0.3px;
