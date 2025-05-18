@@ -152,6 +152,7 @@ h1, h2, h3, h4, h5, h6 {
 .dropdown-menu > a:hover {
     color: var(--primary);
 }
+
 .btn, .btn-light, .bg-white, .dropdown-toggle {
     background-color: transparent !important;
     border: none !important;
@@ -172,7 +173,7 @@ h1, h2, h3, h4, h5, h6 {
     opacity: 0; 
     transform: translateY(10px); 
     transition: opacity 0.3s ease, transform 0.3s ease;
-    border: 1px solid rgba(0, 198, 255, 0.2);
+    border: 1px solid rgba(0, 198, 255, 0.2); /* Added subtle border */
 } 
 
 .dropdown-menu:hover .dropdown-content { 
